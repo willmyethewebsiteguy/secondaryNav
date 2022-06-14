@@ -392,12 +392,12 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
 
   //Init Build
   if (document.querySelectorAll('[data-wm-plugin="subnav"]').length !== 0){
-    if (document.querySelectorAll('head link[href*="WMSecondNav92220v2"]').length == 0){
+    if (document.querySelectorAll('head link[href*="willmyethewebsiteguy/secondaryNav@2.2"]').length == 0){
       let head = document.getElementsByTagName('head')[0],
           link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = 'https://assets.codepen.io/3198845/WMSecondNav92220v2.1.2.css';
+      link.href = 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/secondaryNav@2.2.001/styles.js';
       head.appendChild(link);
       link.onload = function() {
         let event = new Event('secondaryNavCSSLoaded');
