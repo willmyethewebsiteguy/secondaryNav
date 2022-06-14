@@ -397,7 +397,7 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
           link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/secondaryNav@2.2.001/styles.js';
+      link.href = 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/secondaryNav@2.2.001/styles.min.css';
       head.appendChild(link);
       link.onload = function() {
         let event = new Event('secondaryNavCSSLoaded');
