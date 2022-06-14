@@ -1,0 +1,329 @@
+/* ==========
+  Secondary Nav 2.1.3
+  A Secondary Nav Plugin for Squarespace 7.1 Websites
+  Copyright Will Myers 
+========== */
+/*USER VARS*/
+.wm-secondary-container{
+  --logo-height: 80px;
+  --stroke-width: 0px;
+  --fill: black;
+  --stroke: black;
+}
+
+/*Base SubNav Positioning*/
+.wm-secondary-nav{
+  height: auto;
+  position: relative;
+  z-index: 1;
+  pointer-events:auto;
+}
+.header{
+  pointer-events:auto;
+}
+.burger{
+  padding:0px;
+}
+.wm-secondary-sticky-wrapper{
+  position: relative;
+}
+.wm-secondary-container{
+  position: relative;
+  display: flex;
+  align-items:center;
+  justify-content:space-between;
+  box-sizing:border-box;
+  padding: 1vw var(--headerSidePadding, 3vw);
+}
+@media(max-width:799px){
+  .wm-secondary-container{
+    padding: 3vw 6vw;
+  }
+}
+/*Link Items*/
+.wm-subnav-nav-list{ 
+  display:inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow: auto;
+  margin-right: 1.6vw;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.wm-subnav-nav-list::-webkit-scrollbar {
+  display: none;
+}
+.header-nav-item.wm-subnav-item:not(:last-child) {
+  margin-right:1.6vw;
+}
+
+/*CTA Items*/
+.wm-subnav-cta-container {
+  margin-left:2.5vw;
+}
+
+/*Show Nav Items In Edit Mode*/
+body.sqs-layout-editing .hide-nav-item{
+  display:unset !important;
+}
+
+/*Mobile Menu Link Items*/
+.wm-subnav-mobile-list .header-menu-nav-item a{
+  display:inline-block;
+  font-size: clamp(1rem, 4.6vmin, 3rem);
+  margin: 2vw 5vw;
+}
+
+/*Social Icons*/
+.wm-social-icon-container {
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.wm-social-icon-container a{
+  display:inline-flex;
+  width: 16px;
+  height: auto;
+  margin-left: clamp(16px, 1.6vw, 1.6vw);
+}
+.wm-social-icon-container svg{
+  height:100%;
+  width:100%;
+}
+.wm-social-icon-container svg, .wm-social-icon-container path, .wm-social-icon-container circle{
+  stroke: var(--stroke);
+  fill: var(--fill);
+  stroke-width: var(--stroke-width);
+}
+[data-wm-social="youtube"].wm-social-icon {
+  --fill: transparent;
+  --stroke-width: 4px;
+  width: 22px;
+}
+[data-wm-social="email"].wm-social-icon {
+  --fill: transparent;
+  --stroke-width: 4px;
+}
+[data-wm-social="spotify"].wm-social-icon {
+  --fill: transparent;
+  --stroke-width: 4px;
+}
+[data-wm-social="spotify"].wm-social-icon [data-name="layer1"] {
+  --stroke-width: 2px;
+}
+
+/*Secondary Nav Header*/
+.wm-subnav-header{
+  margin-right:auto;
+}
+.wm-subnav-header h1, .wm-subnav-header h2, .wm-subnav-header h3, .wm-subnav-header h4, .wm-subnav-header p {
+  margin:unset;
+  margin-block-start:0px;
+  margin-block-end:0px;
+}
+/*Logo / Image*/
+[data-wm-plugin="subnav"] img{
+  height:80px;
+  width:auto;
+}
+.wm-subnav-header img{
+  height:var(--logo-height, 80px);
+  width:auto;
+}
+
+/*Dropdown list Items*/
+.wm-secondary-dropdown-list-wrapper{
+  position:relative;
+  display:inline-flex;
+  align-items: center;
+}
+.wm-secondary-dropdown-list-container{
+  max-height:0px;
+  position: absolute;
+  overflow:hidden;
+  width:100%;
+  box-sizing:border-box;
+  top:100%;
+  left:0;
+  padding: .5em var(--headerSidePadding, 3vw);
+  text-align: left;
+  min-width: 200px;
+  z-index: 10;
+  opacity:0;
+  visibility:hidden;
+  transition: opacity .3s ease-out, max-height .3s ease-out;
+}
+@media(max-width:799px){
+  .wm-secondary-dropdown-list-container{
+    padding: .5em 6vw;
+  }
+}
+.wm-secondary-dropdown-list-container.open {
+  max-height:100%;
+  opacity:1;
+  visibility:visible;
+  transition: opacity .3s ease-out, max-height .3s ease-out;
+}
+.header-nav-list-item.wm-subnav-item a{
+  display: inline-block;
+  padding:.2em 0;
+}
+.wm-dropdown-list-icon{
+  display:inline-block;
+  width:1.5rem;
+  height:1.5rem;
+}
+.wm-dropdown-list-icon path{
+  stroke-width: 4px;
+}
+.dark .wm-secondary-nav path, .dark-bold .wm-secondary-nav path, .black .wm-secondary-nav path, .black-bold .wm-secondary-nav path{
+  stroke:white;
+}
+
+/*Rotate the icon when open*/
+.wm-secondary-dropdown-list-wrapper.open .wm-dropdown-list-icon{
+  transform:rotate(180deg);
+}
+/*If supports SVG Morphing*/
+@supports (d: path("M 0 32 l 32 -22 L 64 32")) {
+  .wm-secondary-dropdown-list-wrapper path{
+    transition: d .3s ease;
+  }
+  .wm-secondary-dropdown-list-wrapper.open path{
+    d: path("M 0 32 l 32 -22 L 64 32");
+  }
+  .wm-secondary-dropdown-list-wrapper.open .wm-dropdown-list-icon{
+    transform: unset;
+  }
+}
+
+
+@media(min-width:700px) {
+  .wm-secondary-dropdown-list-wrapper{
+    display:none; 
+  }
+}
+@media(max-width:700px) {
+  .wm-secondary-nav{
+    z-index:3;
+  }
+  .wm-subnav-nav-list{
+    display:none; 
+  }
+}
+
+/*Make Visible*/
+.wm-secondary-nav-loaded #wm-subnav, .wm-secondary-nav-loaded .wm-secondary-mobile-nav {
+  transition: opacity 0.5s ease;
+  opacity:1 !important;
+}
+
+
+/*======== Position Top ========*/
+.tweak-wm-secondary-nav--top:not(.sqs-layout-editing) .wm-secondary-sticky-wrapper{
+  width: 100%;
+}
+.tweak-wm-secondary-nav--top:not(.sqs-layout-editing) #wm-subnav {
+  height: auto !important;
+}
+@media(max-width:700px) {
+  .tweak-wm-secondary-nav--top .wm-secondary-nav{
+    display:none;
+  }
+  .tweak-wm-secondary-nav--top .wm-secondary-dropdown-list-wrapper {
+    display:none;
+  }
+  .tweak-wm-secondary-nav--top .wm-subnav-nav-list {
+    display: inline-flex;
+  }
+}
+.tweak-wm-secondary-nav--top.header--menu-open .wm-secondary-nav{
+  display:none;
+}
+
+/*======== Position Bottom ========*/
+.tweak-wm-secondary-nav--bottom:not(.sqs-layout-editing) .wm-secondary-sticky-wrapper{
+  width: 100vw;
+}
+   /*Set To Top Header*/
+.tweak-wm-secondary-nav--bottom:not(.tweak-fixed-header):not(.sqs-layout-editing) .sticky-second-nav .wm-secondary-sticky-wrapper{
+  position:fixed;
+  top:0px;
+}
+.tweak-wm-secondary-nav--bottom .sticky-second-nav .wm-secondary-nav{
+  height:var(--wM-secondNavHeight);
+}
+   /*Fixed Basic Header*/
+   /*No Extra Code Needed, Header is Fixed*/
+
+/*Fixed ScrollBack Header*/
+.tweak-fixed-header-style-scroll-back.tweak-wm-secondary-nav--bottom:not(.sqs-layout-editing) .sticky-second-nav .wm-secondary-sticky-wrapper{
+  position:fixed;
+  top: var(--wM-headerHeight);
+}
+
+.tweak-wm-secondary-nav--bottom.header--menu-open .wm-secondary-nav{
+  display:none;
+}
+
+/*Fix Padding
+.tweak-wm-secondary-nav--bottom .header-announcement-bar-wrapper {
+  padding-bottom: 0vw !important;
+}
+*/
+/*======== Position Center ========*/
+.tweak-wm-secondary-nav--center.sqs-layout-editing .wm-secondary-nav{
+  display:none;
+}
+.tweak-wm-secondary-nav--center:not(.sqs-layout-editing) .wm-secondary-nav{
+  width: 33%;
+  flex-grow: 0;
+  flex-shrink: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.tweak-wm-secondary-nav--center:not(.sqs-layout-editing) .header-actions{
+  display:none !important;
+}
+.tweak-wm-secondary-nav--center:not(.sqs-layout-editing) .wm-secondary-container{
+  padding:unset;
+}
+.tweak-wm-secondary-nav--center .wm-subnav-nav-list {
+  justify-content:flex-end;
+  margin-right:0px;
+}
+.tweak-wm-secondary-nav--center .header-nav-item.wm-subnav-item {
+  margin-left: 1.6vw;
+  margin-right: 0px;
+}
+.tweak-wm-secondary-nav--center .header-nav-item.wm-subnav-item:first-child {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.tweak-wm-secondary-nav--center .header-nav-item.wm-subnav-item:last-child {
+  margin-right: 0px;
+}
+
+
+/*======== Position Section ========*/
+.tweak-wm-secondary-nav--section:not(.sqs-layout-editing) .sticky-page-section{
+  position: sticky !important;
+  top: var(--wM-headerBottom);
+  z-index: 1;
+  min-height:auto !important;
+}
+.tweak-wm-secondary-nav--section .wm-secondary-mobile-nav{
+  display:none;
+}
+
+/*Remove padding in section*/
+body:not(.sqs-layout-editing) .page-section.sticky-page-section .sqs-layout .sqs-row .sqs-block, body:not(.sqs-layout-editing) .sticky-page-section .content-wrapper{ 
+  padding:0px !important;
+}
+body:not(.sqs-layout-editing) .sticky-page-section .row {
+  margin:unset !important;
+}
+body:not(.sqs-layout-editing) .sticky-page-section > div.content-wrapper {
+  max-width:unset;
+}
