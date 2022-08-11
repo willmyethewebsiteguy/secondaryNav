@@ -2,11 +2,6 @@
   Secondary Nav 2.1.4
   A Secondary Nav Plugin for Squarespace 7.1 Websites
   Copyright Will Myers 
-  
-  Update: 
-    - Added code so that the user can add the account button into the secondary Nav using the link #sqsp-account 
-    - Added Messaging & IG Direct Icons
-    - Adding CTA to Mobile Nav
 ========== */
 (function(){
 
@@ -101,15 +96,26 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
   stroke-width="2" stroke-linejoin="round"></path>
 </svg>`
             },
-           patreon: {
-            html: `<svg height="546px" version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            search: {
+              html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Search</title>
+  <path data-name="layer2"
+  fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M39.049 39.049L56 56"
+  stroke-linejoin="round" stroke-linecap="round"  style="stroke-width:8px;"></path>
+  <circle data-name="layer1" cx="27" cy="27" r="17" fill="none" stroke="#202020"
+  stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" style="fill:none; stroke-width:8px;"></circle>
+</svg>`
+            },
+            patreon: {
+              html: `<svg height="546px" version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
   <title>Patreon Icon</title>
   <g>
     <circle cx="42" cy="22" data-fill="1" r="22"></circle>
     <rect data-fill="1" height="64" width="11" x="0" y="0"></rect>
   </g>
 </svg>`
-          }
+            }
           }
     let placement = settingsEl.getAttribute('data-position') || 'top',
         setup = settingsEl.getAttribute('data-nav-setup') || 'custom',
@@ -224,7 +230,9 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
           subNavDropdownList;
       //Build Desktop Container
       if (!document.querySelector('.wm-subnav-nav-list')){
-        subNavDesktopList = document.createElement('div');
+        subNavDesktopList = document.createElement('nav');
+        subNavDesktopList.setAttribute("role", "navigation");
+        subNavDesktopList.setAttribute("aria-label", "Secondary Navigation");
         subNavDesktopList.classList.add('wm-subnav-nav-list','header-nav-wrapper');
         secondaryContainer.append(subNavDesktopList);
         secondaryContainer.append(secondaryDropdownListWrapper);
@@ -392,12 +400,12 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
 
   //Init Build
   if (document.querySelectorAll('[data-wm-plugin="subnav"]').length !== 0){
-    if (document.querySelectorAll('head link[href*="willmyethewebsiteguy/secondaryNav@2.2"]').length == 0){
+    if (document.querySelectorAll('head link[href*="WMSecondNav92220v2"]').length == 0){
       let head = document.getElementsByTagName('head')[0],
           link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/secondaryNav@2.2.001/styles.min.css';
+      link.href = 'https://cdn.jsdelivr.net/gh/willmyethewebsiteguy/secondaryNav@2.2.002/styles.min.css';
       head.appendChild(link);
       link.onload = function() {
         let event = new Event('secondaryNavCSSLoaded');
