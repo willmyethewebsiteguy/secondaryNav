@@ -115,6 +115,13 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
     <rect data-fill="1" height="64" width="11" x="0" y="0"></rect>
   </g>
 </svg>`
+            },
+            twitch: {
+              html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria labelledby="title" aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Twitch</title>
+  <path data-name="layer2" d="M45.631 54.119H33.913l-7.875 7.875h-7.875v-7.875H3.912V12.4L7.85 1.994h53.437v36.563zm10.406-18.187V7.244H13.006v37.782h11.719v7.781l7.781-7.781H46.85z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round"></path> 
+  <path data-name="layer1" d="M41.694 17.651v15.656h5.25V17.651zM27.35 33.307h5.25V17.651h-5.25z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round"></path>
+</svg>`
             }
           }
     let placement = settingsEl.getAttribute('data-position') || 'top',
@@ -381,7 +388,7 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
     let url = window.location.pathname,
         links = document.querySelectorAll('.wm-subnav-nav-list.header-nav-wrapper a');
     links.forEach(link => {
-      if (link.href.split('.com')[1] == url){
+      if (link.getAttribute('href') == url){
         link.closest('.header-nav-item').classList.add('header-nav-item--active')
       }
     });
