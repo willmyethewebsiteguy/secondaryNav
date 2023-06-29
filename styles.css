@@ -11,6 +11,32 @@
   --stroke: black;
 }
 
+.sqs-edit-mode-active .page-section [data-wm-plugin="subnav"]{
+  color: var(--headingLargeColor, white);
+  border: 2px dashed;
+  padding: 8px;
+}
+.sqs-edit-mode-active .page-section [data-wm-plugin="subnav"]:after{
+  content: 'Secondary Nav Section';
+  background-color: var(--siteBackgroundColor, black);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  padding: 2px 5px;
+}
+.sqs-edit-mode-active .sqs-block:hover [data-wm-plugin="subnav"]:after{
+  opacity: 1;
+  visibility: visible;
+}
+
 /*Base SubNav Positioning*/
 .wm-secondary-nav{
   height: auto;
@@ -175,9 +201,7 @@ body.sqs-layout-editing .hide-nav-item{
 }
 .wm-dropdown-list-icon path{
   stroke-width: 4px;
-}
-.dark .wm-secondary-nav path, .dark-bold .wm-secondary-nav path, .black .wm-secondary-nav path, .black-bold .wm-secondary-nav path{
-  stroke:white;
+  stroke: var(--dropdown-arrow-color, currentColor);
 }
 
 /*Rotate the icon when open*/
