@@ -192,8 +192,24 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
       insertAfter(secondaryWrapper, placementReferenceEl)
     }
     
-    //Set Mobile Placement -- Menu
-    mobileRootFolder.append(secondaryMobileWrapper);
+
+    // Set Mobile Placement -- Bottom
+    if (placement.includes('top')) {
+         mobileRootFolder.prepend(secondaryMobileWrapper);
+    }
+      
+    // Set Mobile Placement -- Bottom
+    else if (placement.includes('bottom')) {
+          mobileRootFolder.append(secondaryMobileWrapper);
+    } 
+
+    else if (placement.includes('section')) {
+          mobileRootFolder.append(secondaryMobileWrapper);
+    } 
+
+    else if (placement.includes('center')) {
+          mobileRootFolder.append(secondaryMobileWrapper);
+    }
 
     //Build Out Nav Items 
     let linkArr,
