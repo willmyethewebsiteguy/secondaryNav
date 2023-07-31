@@ -197,6 +197,7 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
     if (placement.includes('top')) {
          mobileRootFolder.prepend(secondaryMobileWrapper);
     }
+      
     // Set Mobile Placement -- Bottom
     else if (placement.includes('bottom')) {
           mobileRootFolder.append(secondaryMobileWrapper);
