@@ -126,14 +126,17 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
           }
     let placement = settingsEl.getAttribute('data-position') || 'top',
         setup = settingsEl.getAttribute('data-nav-setup') || 'custom',
-        sticky = settings.getAttribute('data-sticky') || 'false';
-
+        sticky = settings.getAttribute('data-sticky') || 'false',
+        mobilePlacement = settings.getAttribute('mobile-placement') || 'bottom';
+    
     placement = placement.toLowerCase();
     placement = placement.trim();
     setup = setup.toLowerCase();
     setup = setup.trim();
     sticky= sticky.toLowerCase();
     sticky = sticky.trim();
+    mobilePlacement = mobilePlacement.toLowerCase();
+    mobilePlacement = mobilePlacement.trim();
 
     // Declare Vars
     let placementReferenceEl,
@@ -193,7 +196,13 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
     }
     
     //Set Mobile Placement -- Menu
-    mobileRootFolder.append(secondaryMobileWrapper);
+    if (mobilePlacement.includes('top')) {
+      mobileRootFolder.prepend(secondaryMobileWrapper);
+    }
+    //Set Desktop Placement -- Bottom
+    else if (mobilePlacement.includes('bottom')) {
+      mobileRootFolder.append(secondaryMobileWrapper);
+    } 
 
     //Build Out Nav Items 
     let linkArr,
