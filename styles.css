@@ -11,6 +11,11 @@
   --stroke: black;
 }
 
+/*Hide "Edit Header" Button when not in edit mode*/
+.sqs-edit-mode:not(.sqs-edit-mode-active) .header-edit-button-container{
+  display:none;
+}
+
 .sqs-edit-mode-active .page-section [data-wm-plugin="subnav"]{
   color: var(--headingLargeColor, white);
   border: 2px dashed;
