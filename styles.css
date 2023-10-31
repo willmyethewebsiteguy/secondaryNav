@@ -7,13 +7,13 @@
 .wm-secondary-container{
   --logo-height: 80px;
   --stroke-width: 0px;
-  --fill: black;
-  --stroke: black;
+  --fill: var(--navigationLinkColor, black);
+  --stroke: var(--navigationLinkColor, black);
 }
 
 /*Hide "Edit Header" Button when not in edit mode*/
-.sqs-edit-mode:not(.sqs-edit-mode-active) .header-edit-button-container{
-  display:none;
+.wm-secondary-nav-loaded.sqs-edit-mode:not(.sqs-edit-mode-active) .header-edit-button-container{
+  display:none !important;
 }
 
 .sqs-edit-mode-active .page-section [data-wm-plugin="subnav"]{
