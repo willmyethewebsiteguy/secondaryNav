@@ -360,3 +360,8 @@ body:not(.sqs-layout-editing) .sticky-page-section .row {
 body:not(.sqs-layout-editing) .sticky-page-section > div.content-wrapper {
   max-width:unset;
 }
+
+/*Hide Header Edit Button when Expanded*/
+body.is-expanded.sqs-jacquard:not(.sqs-edit-mode-active) .header-edit-button-container{
+  display:none !important;
+}
