@@ -219,7 +219,7 @@ aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
     } 
     //If Simple Setup
     else {
-      let linksDesktopEl = document.querySelector('.header-nav-list .header-nav-folder-title[href="/secondary-nav"]'),
+      let linksDesktopEl = document.querySelector('.header-nav-list .header-nav-folder-title[href="/secondary-nav"], .header-nav-list .header-nav-folder-title[data-href="/secondary-nav"]'),
           linksMobileEl = document.querySelector('[data-folder="root"] [data-folder-id="/secondary-nav"]');
       linkArr = linksDesktopEl.nextElementSibling.querySelectorAll('a');
       linksDesktopEl.closest('.header-nav-item--folder').classList.add('hide-nav-item');
